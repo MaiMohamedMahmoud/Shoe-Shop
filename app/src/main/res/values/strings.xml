@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ShoeStore</string>
+    <string name="password">Enter your Password:</string>
+    <string name="email">Enter your E-Mail:</string>
+    <string name="alreadyLogin">Already has an account</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="image_login">image login</string>
+    <string name="description">Mai Shoe is one of the nation\'s largest, fastest growing and most exciting family footwear retailers.</string>
+    <string name="app_description">Mai Shoe is one of the nation\'s largest, fastest growing and most exciting family footwear retailers. We offer customers a completely unique and fun shopping experience with a broad assortment of great brands, and value priced footwear for the entire family. Download our FREE app to see what fun and exciting surprises await!</string>
+    <string name="weclome">Welcome!!</string>
+    <string name="instructions"> We offer customers a completely unique and fun shopping experience with a broad assortment of great brands, and value priced footwear for the entire family. Download our FREE app to see what fun and exciting surprises await!</string>
+    <string name="next">Next</string>
+    <string name="letgo">Let\'s go</string>
+    <string name="welcome_image">Welcome Image</string>
+    <string name="join_text">join now to enjoy our offers and great deals !!</string>
+    <string name="help_text">let\'s help you to find your next pair of shoes... </string>
+
+</resources>

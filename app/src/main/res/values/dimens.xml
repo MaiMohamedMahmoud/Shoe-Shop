@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_wide">16dp</dimen>
+    <dimen name="txt_size">16sp</dimen>
+    <dimen name="margin_half">12dp</dimen>
+</resources>
