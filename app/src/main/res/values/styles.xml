@@ -18,13 +18,13 @@
 
     <style name="btn_style">
         <item name="android:textColor">@color/color_text_btn</item>
-        <item name="android:backgroundTint">@color/color</item>
+        <item name="android:backgroundTint">@color/color_btn</item>
     </style>
 
     <style name="text_style">
         <item name="android:fontFamily">cursive</item>
         <item name="android:padding">@dimen/margin_wide</item>
-        <item name="android:textColor">@color/color</item>
+        <item name="android:textColor">@color/color_txt</item>
         <item name="android:textSize">20sp</item>
     </style>
 

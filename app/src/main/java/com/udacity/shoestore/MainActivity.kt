@@ -2,6 +2,7 @@ package com.udacity.shoestore
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -9,6 +10,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        getSupportActionBar()?.setDisplayShowTitleEnabled(true)
+        Log.i("MainActivity","MainActivity")
         Timber.plant(Timber.DebugTree())
     }
 }

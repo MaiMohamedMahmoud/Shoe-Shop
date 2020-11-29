@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFD1221E</color>
-    <color name="colorPrimaryDark">#FFC31914</color>
-    <color name="colorAccent">#e72621</color>
+    <color name="colorPrimary">#1f7a8c</color>
+    <color name="colorPrimaryDark">#165763</color>
+    <color name="colorAccent">#db222a</color>
     <color name="color">#e72621</color>
     <color name="color_text_btn">#FFFFFFFF</color>
+    <color name="color_btn">#1f7a8c</color>
+    <color name="color_txt">#2b2d42</color>
+    <!--868070
+    2b2d42-->
 </resources>

@@ -6,6 +6,7 @@
     <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="image_login">image login</string>
+    <string name="image_shoe_item">image shoe item</string>
     <string name="description">Mai Shoe is one of the nation\'s largest, fastest growing and most exciting family footwear retailers.</string>
     <string name="app_description">Mai Shoe is one of the nation\'s largest, fastest growing and most exciting family footwear retailers. We offer customers a completely unique and fun shopping experience with a broad assortment of great brands, and value priced footwear for the entire family. Download our FREE app to see what fun and exciting surprises await!</string>
     <string name="weclome">Welcome!!</string>
@@ -15,5 +16,14 @@
     <string name="welcome_image">Welcome Image</string>
     <string name="join_text">join now to enjoy our offers and great deals !!</string>
     <string name="help_text">let\'s help you to find your next pair of shoes... </string>
-
+    <string name="shoe_name">Shoe Name</string>
+    <string name="shoe_company">Shoe Company</string>
+    <string name="textview">Shoe Name:</string>
+    <string name="name">Name</string>
+    <string name="brand_name">Brand Name</string>
+    <string name="company_name">Company Name</string>
+    <string name="txt_description">Description</string>
+    <string name="txt_size">Size</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 </resources>
