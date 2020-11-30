@@ -1,16 +1,16 @@
 package com.udacity.shoestore.screens
 
-import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.udacity.shoestore.R
+import com.udacity.shoestore.models.Shoe
 import kotlinx.android.synthetic.main.shoe_item.view.*
 
-class ShoeItemAdapter(val listData: MutableLiveData<List<String>>) :
+class ShoeItemAdapter(val listData: List<Shoe>) :
     RecyclerView.Adapter<ShoeItemAdapter.ShoeItemViewHolder>() {
 
     inner class ShoeItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -34,10 +34,12 @@ class ShoeItemAdapter(val listData: MutableLiveData<List<String>>) :
     }
 
     override fun getItemCount(): Int {
-        return listData.value?.size ?: 0
+        Log.i("ShoeListFragment", "count " + listData.size)
+        return listData.size
     }
 
     override fun onBindViewHolder(holder: ShoeItemViewHolder, position: Int) {
-        holder.name.text = listData.value?.get(position)
+        holder.name.text = listData[position].name
+        Log.i("ShoeListFragment Bind", listData[position].name)
     }
 }
