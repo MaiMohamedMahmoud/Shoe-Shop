@@ -42,10 +42,13 @@ class ShoeDetailsFragment : Fragment() {
             )
             shoeModel.addShoeObj(shoeObj)
 
-            Log.i("ShoeDetailsFragment", shoeObj.company + shoeObj.name + shoeObj.size)
-            Timber.i(shoeObj.company + shoeObj.name + shoeObj.size)
+            Timber.i("Save Button")
             findNavController().navigate(ShoeDetailsFragmentDirections.actionShoeDetailsFragment2ToShoeListFragment())
 
+        }
+        binding.cancel.setOnClickListener {
+            Timber.i("Cancel Button")
+            findNavController().navigate(ShoeDetailsFragmentDirections.actionShoeDetailsFragment2ToShoeListFragment())
         }
         return binding.root
     }

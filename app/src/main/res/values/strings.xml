@@ -26,4 +26,11 @@
     <string name="txt_size">Size</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="logInFlag">logInFlag</string>
+    <string name="fragment_login">Login</string>
+    <string name="fragment_welcome">Welcome</string>
+    <string name="fragment_instructions">Instructions</string>
+    <string name="fragment_shoe_list">Shoe List</string>
+    <string name="fragment_shoe_adding_details">Adding shoe</string>
+    <string name="logout">Logout</string>
 </resources>
