@@ -1,5 +1,6 @@
 package com.udacity.shoestore.screens
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -22,6 +23,12 @@ class LoginFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
 
         binding.btnLogin.setOnClickListener {
+            val sharedPref =
+                activity?.getPreferences(Context.MODE_PRIVATE) ?: return@setOnClickListener
+            with(sharedPref.edit()) {
+                putBoolean(getString(R.string.logInFlag), true)
+                apply()
+            }
             findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
         }
         binding.btnCreate.setOnClickListener {
@@ -31,4 +38,5 @@ class LoginFragment : Fragment() {
         return binding.root
 
     }
+
 }
