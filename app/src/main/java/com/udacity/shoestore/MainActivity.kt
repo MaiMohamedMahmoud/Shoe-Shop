@@ -21,68 +21,22 @@ import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController
-    lateinit var sharedPref: SharedPreferences
-    lateinit var navGraph: NavGraph
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        getSupportActionBar()?.setDisplayShowTitleEnabled(true)
-
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-        navGraph = navController.navInflater.inflate(R.navigation.nav_main_graph)
-        sharedPref = this?.getPreferences(Context.MODE_PRIVATE) ?: return
-        val flag = sharedPref.getBoolean(getString(R.string.logInFlag), false)
 
-        if (flag) {
-             navGraph.setStartDestination(R.id.shoeListFragment);
-            //navController.navigate(R.id.shoeListFragment)
-        } else {
-
-             navGraph.setStartDestination(R.id.loginFragment);
-            //navController.navigate(R.id.loginFragment)
-        }
-        navController.setGraph(navGraph);
+        //initialize appBarConfiguration
         val appBarConfiguration = AppBarConfiguration(navController.graph)
-
+        //setup toolbar with the appbarconfig and navController
         val toolbar: Toolbar = findViewById<Toolbar>(R.id.toolbar)
         toolbar.setupWithNavController(navController, appBarConfiguration)
-        setSupportActionBar(toolbar);
-        toolbar.showOverflowMenu();
+        setSupportActionBar(toolbar)
+        toolbar.showOverflowMenu()
+//        getSupportActionBar()?.setDisplayHomeAsUpEnabled(false);
         Timber.plant(Timber.DebugTree())
     }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.logout -> {
-                Logout()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-    private fun Logout() {
-        sharedPref.edit {
-            putBoolean(getString(R.string.logInFlag), false)
-            apply()
-        }
-        navController.navigate(R.id.loginFragment)
-    }
-
-    override fun onBackPressed() {
-        navController.navigateUp()
-        //super.onBackPressed()
-    }
-
-//    override fun onSupportNavigateUp(): Boolean {
-//        return navController.navigateUp()
-//    }
 
 }
