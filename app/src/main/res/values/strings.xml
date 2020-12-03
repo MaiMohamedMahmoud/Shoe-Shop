@@ -33,4 +33,5 @@
     <string name="fragment_shoe_list">Shoe List</string>
     <string name="fragment_shoe_adding_details">Adding shoe</string>
     <string name="logout">Logout</string>
+    <string name="add_shoe">Add Shoe</string>
 </resources>

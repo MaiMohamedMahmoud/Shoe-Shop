@@ -1,24 +1,19 @@
-package com.udacity.shoestore.screens
+package com.udacity.shoestore.screens.ShoeList
 
-import android.app.ActionBar
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.NavOptions
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.navigation.NavigationView
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
-import kotlinx.android.synthetic.main.activity_main.*
+import com.udacity.shoestore.screens.SharedShoeListViewModel
 import timber.log.Timber
 
 
@@ -54,7 +49,58 @@ class ShoeListFragment : Fragment() {
         //observers:
         shoeModel.shoeListLiveData.observe(viewLifecycleOwner, Observer { list ->
             adapter = ShoeItemAdapter(list)
-            Log.i("ShoeListFragment", "" + list.size)
+
+            //IF We Follow the requirement it will be something like this:
+            //Create linearlayout dynamically and add it to the scrollView
+            //inside linearLayout create textView and image and fill the data with data return from list
+            /**
+             * Define Linear Layout with Vertical orientation and add that view
+             * to scrollview which could only contain one child
+             * then add child views to this LinearLayout dynamically with the data.
+            val linearLayout = LinearLayout(context)
+            val linearParams = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            linearLayout.orientation = LinearLayout.VERTICAL
+            linearLayout.layoutParams = linearParams
+
+            binding.listOfShoes.addView(linearLayout)
+            for (i in list) {
+
+
+            val imageView1 = ImageView(context)
+            val params1 = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            val TextView1 = TextView(context)
+            val params2 = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+
+            imageView1.layoutParams = params1
+            imageView1.setImageResource(R.drawable.welocme)
+
+            TextView1.layoutParams = params2
+            TextView1.text = i.name
+
+            linearLayout.addView(imageView1)
+            linearLayout.addView(TextView1)
+            }
+             **/
+
+            /**
+             * RecycleView also display scrolling view but it is much more efficient
+             * RecyclerView will reuse the created views to reduce memory and bind the data to that view which make app more responsiveness.
+             *
+             * According to The Big Nerd Ranch Guide (2015) ..
+             * if you have to view 100 TextViews.creating a TextView for every item in the list could easily become unworkable. As you can imagine,
+             * a list can have far more than 100 items, and it can be more complex than TextView.you can't see all the view at once so there is no need to have 100 views ready and waiting.
+             * It would make far more sense to create view objects only as you need them.
+             **/
+
             //binding the recycle List
             binding.listOfShoes.layoutManager = manager
             binding.listOfShoes.adapter = adapter
@@ -62,17 +108,6 @@ class ShoeListFragment : Fragment() {
         })
 
         sharedPref = this.requireActivity()?.getPreferences(Context.MODE_PRIVATE) ?: return
-        val flag = sharedPref.getBoolean(getString(R.string.logInFlag), false)
-
-        if (!flag) {
-            findNavController().popBackStack()
-            val startDestination = R.id.loginFragment
-            val navOptions = NavOptions.Builder()
-                .setPopUpTo(startDestination, true)
-                .build()
-            findNavController().navigate(startDestination, null, navOptions)
-            Timber.i("flag" + flag)
-        }
 
     }
 

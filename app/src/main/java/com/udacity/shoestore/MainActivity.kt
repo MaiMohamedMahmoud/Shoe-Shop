@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
@@ -26,16 +27,14 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-
+        navController = this.findNavController(R.id.nav_host_fragment)
         //initialize appBarConfiguration
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         //setup toolbar with the appbarconfig and navController
         val toolbar: Toolbar = findViewById<Toolbar>(R.id.toolbar)
         toolbar.setupWithNavController(navController, appBarConfiguration)
-        setSupportActionBar(toolbar)
         toolbar.showOverflowMenu()
-//        getSupportActionBar()?.setDisplayHomeAsUpEnabled(false);
+
         Timber.plant(Timber.DebugTree())
     }
 
