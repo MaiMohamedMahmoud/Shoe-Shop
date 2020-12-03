@@ -34,4 +34,5 @@
     <string name="fragment_shoe_adding_details">Adding shoe</string>
     <string name="logout">Logout</string>
     <string name="add_shoe">Add Shoe</string>
+    <string name="error_msg">You have to enter all the field in order to continue</string>
 </resources>
