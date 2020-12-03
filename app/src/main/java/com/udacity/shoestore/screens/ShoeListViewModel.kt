@@ -10,9 +10,13 @@ class SharedShoeListViewModel : ViewModel() {
 
     val shoeListLiveData = MutableLiveData<MutableList<Shoe>>()
 
+    val ShoeList: LiveData<MutableList<Shoe>>
+        get() = shoeListLiveData
+
+
     val shoeList = mutableListOf<Shoe>(
-        Shoe("queen", 5.0, "Company", "des"),
-        Shoe("hospital", 5.0, "Company", "des")
+        Shoe("Shoe 1", 5.0, "Brand Name 1", "des"),
+        Shoe("Shoe 2", 5.0, "Brand Name 2", "des")
     )
 
     init {

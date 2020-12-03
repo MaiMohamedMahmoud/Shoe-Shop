@@ -1,19 +1,19 @@
-package com.udacity.shoestore.screens
+package com.udacity.shoestore.screens.ShoeList
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.udacity.shoestore.R
+import com.udacity.shoestore.databinding.ShoeItemBinding
 import com.udacity.shoestore.models.Shoe
-import kotlinx.android.synthetic.main.shoe_item.view.*
 
 class ShoeItemAdapter(val listData: List<Shoe>) :
     RecyclerView.Adapter<ShoeItemAdapter.ShoeItemViewHolder>() {
 
-    inner class ShoeItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ShoeItemViewHolder(val binding: ShoeItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         val name: TextView
         val company: TextView
 
@@ -22,15 +22,17 @@ class ShoeItemAdapter(val listData: List<Shoe>) :
             company = itemView.findViewById(R.id.txt_company)
         }
 
-//        fun bind(position:Int) {
-//            name.text = this@ShoeItemAdapter.listData.get(0)
-//        }
+        fun bind(shoe: Shoe) {
+            // name.text = shoe.name //this@ShoeItemAdapter.listData.get(0)
+            // company.text = shoe.company
+            binding.shoe = shoe
+            binding.executePendingBindings()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoeItemViewHolder {
-        val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.shoe_item, parent, false)
-        return ShoeItemViewHolder(view)
+        val binding = ShoeItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ShoeItemViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -39,7 +41,8 @@ class ShoeItemAdapter(val listData: List<Shoe>) :
     }
 
     override fun onBindViewHolder(holder: ShoeItemViewHolder, position: Int) {
-        holder.name.text = listData[position].name
-        Log.i("ShoeListFragment Bind", listData[position].name)
+        holder.bind(listData[position])
+//        holder.name.text = listData[position].name
+//        Log.i("ShoeListFragment Bind", listData[position].name)
     }
 }
