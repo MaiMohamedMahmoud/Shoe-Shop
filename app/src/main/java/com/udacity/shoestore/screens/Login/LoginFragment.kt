@@ -27,7 +27,6 @@ class LoginFragment : Fragment() {
 
         loginViewModel =
             ViewModelProvider(this, loginViewModelFactory).get(LoginViewModel::class.java)
-
         checkLogin()
     }
 
@@ -43,6 +42,7 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
             loginViewModel.saveSharedPref()
             findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
+
         }
         binding.btnCreate.setOnClickListener {
             loginViewModel.saveSharedPref()
@@ -52,9 +52,13 @@ class LoginFragment : Fragment() {
     }
 
     fun checkLogin() {
+
         val result = loginViewModel.checkLogin()
-        findNavController().popBackStack()
-        result.first?.let { findNavController().navigate(it, null, result.second) }
+        result.first?.let {
+            findNavController().popBackStack()
+            findNavController().navigate(it, null, result.second)
+        }
+
 
     }
 
