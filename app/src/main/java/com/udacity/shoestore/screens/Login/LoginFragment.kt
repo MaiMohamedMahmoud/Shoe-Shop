@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -20,6 +21,7 @@ class LoginFragment : Fragment() {
     private lateinit var loginViewModelFactory: LoginViewModelFactory
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var sharedPref: SharedPreferences
+    private lateinit var binding: FragmentLoginBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPref = this.requireActivity()?.getPreferences(Context.MODE_PRIVATE) ?: return
@@ -36,19 +38,27 @@ class LoginFragment : Fragment() {
     ): View {
         Log.i("LoginFragment", "LoginFragment")
         //initiate binding variable using DataBindUtil
-        val binding: FragmentLoginBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
 
         binding.btnLogin.setOnClickListener {
-            loginViewModel.saveSharedPref()
-            findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
-
+            login()
         }
         binding.btnCreate.setOnClickListener {
-            loginViewModel.saveSharedPref()
-            findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
+            login()
         }
         return binding.root
+    }
+
+    private fun login() {
+        if (binding.editEmail.text.isNotEmpty() && binding.editPassword.text.isNotEmpty()) {
+            loginViewModel.saveSharedPref()
+            findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
+        } else {
+            Toast.makeText(
+                context, R.string.error_msg,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     fun checkLogin() {
