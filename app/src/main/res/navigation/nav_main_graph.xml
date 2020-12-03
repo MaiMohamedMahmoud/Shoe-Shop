@@ -29,9 +29,8 @@
         tools:layout="@layout/fragment_instructions">
         <action
             android:id="@+id/action_instructorsFragment_to_shoeListFragment"
-            app:destination="@id/shoeListFragment" >
-            <argument
-                android:name="shoe_obj" />
+            app:destination="@id/shoeListFragment">
+            <argument android:name="shoe_obj" />
         </action>
     </fragment>
     <fragment

@@ -118,19 +118,21 @@ class ShoeListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.logout -> {
-                Logout()
+                logout()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
 
-    private fun Logout() {
+    private fun logout() {
         Timber.i("inside logout")
         with(sharedPref.edit()) {
-            putBoolean(getString(R.string.logInFlag), false)
+            putBoolean(R.string.logInFlag.toString(), false)
             apply()
         }
+        findNavController().popBackStack()
         findNavController().navigate(R.id.loginFragment)
     }
 
